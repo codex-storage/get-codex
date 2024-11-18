@@ -5,7 +5,7 @@ setlocal enabledelayedexpansion
 
 :: Variables
 if not defined VERSION set VERSION=latest
-if not defined INSTALL_CIRDL set INSTALL_CIRDL=false
+if not defined CIRDL set CIRDL=false
 if not defined INSTALL_DIR set "INSTALL_DIR=%LOCALAPPDATA%\Codex"
 set CODEX_ARCHIVE_PREFIX=codex
 set CIRDL_ARCHIVE_PREFIX=cirdl
@@ -26,14 +26,14 @@ if "%1" == "help" (
   set URL=https://get.codex.storage/!SCRIPT_NAME!
   set "COMMAND=curl -sO !URL!"
   echo   !COMMAND! ^&^& !SCRIPT_NAME!
-  echo   !COMMAND! ^&^& set VERSION=0.1.7 ^& set INSTALL_CIRDL=true ^& !SCRIPT_NAME!
+  echo   !COMMAND! ^&^& set VERSION=0.1.7 ^& set CIRDL=true ^& !SCRIPT_NAME!
   echo   !COMMAND! ^&^& set VERSION=0.1.7 ^& set WINDOWS_LIBS=false ^& !SCRIPT_NAME!
   echo   !COMMAND! ^&^& set VERSION=0.1.7 ^& set "INSTALL_DIR=C:\Program Files\Codex" ^& !SCRIPT_NAME!
   echo.
   echo %ESC%[93mOptions:%ESC%[%m
   echo   - help                                 - show this help
   echo   - VERSION=0.1.7                        - codex and cird version to install
-  echo   - INSTALL_CIRDL=true                   - install cirdl
+  echo   - CIRDL=true                           - install cirdl
   echo   - "INSTALL_DIR=C:\Program Files\Codex" - directory to install binaries
   echo   - WINDOWS_LIBS=false                   - download and install archive without the libs
   exit /b 0
@@ -89,9 +89,9 @@ if "%VERSION%" == "latest" (
 set message="Computing archives and binaries names"
 call :show_progress %message%
 ::: Remove trailing spaces
-for /l %%v in (1,1,100) do if "!INSTALL_CIRDL:~-1!"==" " set INSTALL_CIRDL=!INSTALL_CIRDL:~0,-1!
+for /l %%v in (1,1,100) do if "!CIRDL:~-1!"==" " set CIRDL=!CIRDL:~0,-1!
 ::: Set variables
-if "%INSTALL_CIRDL%" == "true" (
+if "%CIRDL%" == "true" (
   set "ARCHIVES=%CODEX_ARCHIVE_PREFIX% %CIRDL_ARCHIVE_PREFIX%"
   set "BINARIES=%CODEX_BINARY_PREFIX% %CIRDL_BINARY_PREFIX%"
 ) else (

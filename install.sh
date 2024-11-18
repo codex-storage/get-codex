@@ -5,7 +5,7 @@ set -e
 
 # Variables
 VERSION=${VERSION:-latest}
-INSTALL_CIRDL=${INSTALL_CIRDL:-false}
+CIRDL=${CIRDL:-false}
 INSTALL_DIR=${INSTALL_DIR:-/usr/local/bin}
 CODEX_ARCHIVE_PREFIX="codex"
 CIRDL_ARCHIVE_PREFIX="cirdl"
@@ -28,13 +28,13 @@ if [[ $1 == *"h"* ]] ; then
   \e[33mUsage:\e[0m
     ${COMMAND} | bash
     ${COMMAND} | VERSION=0.1.7 bash
-    ${COMMAND} | VERSION=0.1.7 INSTALL_CIRDL=true bash
+    ${COMMAND} | VERSION=0.1.7 CIRDL=true bash
     ${COMMAND} | bash -s help
 
   \e[33mOptions:\e[0m
     - help                       - show this help
     - VERSION=0.1.7              - codex and cird version to install
-    - INSTALL_CIRDL=true         - install cirdl
+    - CIRDL=true                 - install cirdl
     - INSTALL_DIR=/usr/local/bin - directory to install binaries
     - WINDOWS_LIBS=true          - download and install archive with libs for windows
   "
@@ -77,8 +77,8 @@ show_progress "${message}"
 # Archives and binaries
 message="Compute archives and binaries names"
 show_progress "${message}"
-[[ "${INSTALL_CIRDL}" == "true" ]] && ARCHIVES=("${CODEX_ARCHIVE_PREFIX}" "${CIRDL_ARCHIVE_PREFIX}") || ARCHIVES=("${CODEX_ARCHIVE_PREFIX}")
-[[ "${INSTALL_CIRDL}" == "true" ]] && BINARIES=("${CODEX_BINARY_PREFIX}" "${CIRDL_BINARY_PREFIX}") || BINARIES=("${CODEX_BINARY_PREFIX}")
+[[ "${CIRDL}" == "true" ]] && ARCHIVES=("${CODEX_ARCHIVE_PREFIX}" "${CIRDL_ARCHIVE_PREFIX}") || ARCHIVES=("${CODEX_ARCHIVE_PREFIX}")
+[[ "${CIRDL}" == "true" ]] && BINARIES=("${CODEX_BINARY_PREFIX}" "${CIRDL_BINARY_PREFIX}") || BINARIES=("${CODEX_BINARY_PREFIX}")
 show_pass "${message}"
 
 # Get the current OS
