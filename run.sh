@@ -150,7 +150,6 @@ show_progress "${message}" && show_pass "${message}"
 vars=$(env | grep CODEX)
 echo -e "${vars//CODEX_/   - CODEX_}"
 echo -e "   $@"
-echo -e "   ${bootstrap_nodes[@]}"
 
 # Run Codex
 message="Running Codex"
