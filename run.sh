@@ -17,7 +17,7 @@ export MSYS_NO_PATHCONV=1
 
 export CODEX_DATA_DIR="${CODEX_DATA_DIR:-./codex-data}"
 export CODEX_STORAGE_QUOTA="${CODEX_STORAGE_QUOTA:-10g}"
-export CODEX_NAT="${CODEX_NAT:-$(curl -s https://ip.codex.storage)}"
+export CODEX_NAT="${CODEX_NAT:-extip:$(curl -s https://ip.codex.storage)}"
 export CODEX_API_PORT="${CODEX_API_PORT:-8080}"
 export CODEX_DISC_PORT="${CODEX_DISC_PORT:-8090}"
 export CODEX_LISTEN_ADDRS="${CODEX_LISTEN_ADDRS:-/ip4/0.0.0.0/tcp/8070}"
